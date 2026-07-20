@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://everlane.com/.well-known/openid-configuration
+docs: https://everlane.com/.well-known/openid-configuration
+summary:
+  types: [oauth2, openIdConnect]
+  oauth2_flows: [authorizationCode]
+  grant_types: [authorization_code, refresh_token, 'urn:ietf:params:oauth:grant-type:jwt-bearer']
+  pkce: [S256]
+  token_endpoint_auth: [client_secret_basic]
+  id_token_signing: [RS256]
+schemes:
+- name: ShopifyCustomerAccountOIDC
+  type: openIdConnect
+  issuer: https://shopify.com/authentication/62379163734
+  openIdConnectUrl: https://everlane.com/.well-known/openid-configuration
+  authorization_endpoint: https://account.everlane.com/authentication/oauth/authorize
+  token_endpoint: https://account.everlane.com/authentication/oauth/token
+  jwks_uri: https://account.everlane.com/authentication/.well-known/jwks.json
+  end_session_endpoint: https://account.everlane.com/authentication/logout
+  response_types: [code]
+  scopes_supported: [openid, email, 'customer-account-api:full', 'customer-account-mcp-api:full']
+  sources: ['well-known/everlane-openid-configuration.json']
+notes: Shopify-managed Customer Account authentication (OIDC/OAuth2) exposed on the account.everlane.com subdomain. The public storefront MCP at everlane.com/api/mcp is unauthenticated for read/cart; checkout requires buyer approval.
