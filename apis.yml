@@ -1,7 +1,16 @@
 aid: everlane
 name: everlane
-description: everlane is a company surfaced as a portfolio company of slow-ventures and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Everlane is a San Francisco-based direct-to-consumer apparel and footwear brand
+  known for its "Radical Transparency" model — publishing factory sourcing, true
+  costs, and markups on everyday wardrobe essentials. As an API Evangelist network
+  entry, Everlane has no bespoke public developer program; its online store runs on
+  Shopify and exposes an agent-facing commerce surface: a live Storefront MCP server
+  at everlane.com/api/mcp (product search, cart, product details, and policy/FAQ
+  lookup), a Universal Commerce Protocol (UCP) profile at /.well-known/ucp, a
+  published /llms.txt of agent instructions, and Shopify Customer Account OIDC/OAuth2
+  authentication. Surfaced as a Slow Ventures portfolio company and enriched from its
+  public agent, well-known, and authentication surfaces.
 url: https://raw.githubusercontent.com/api-evangelist/everlane/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,12 +18,57 @@ x-backed-by:
 - slow-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://www.everlane.com/favicon.ico
 tags:
 - Company
-apis: []
+- Retail
+- E-Commerce
+- Apparel
+- Fashion
+- Direct-to-Consumer
+- Shopify
+- Agentic Commerce
+apis:
+- name: Everlane Storefront (Shopify MCP / UCP)
+  description: >-
+    Agent-facing commerce surface for the Everlane storefront, hosted on Shopify:
+    a Model Context Protocol (MCP) server for catalog search, cart, product details,
+    and store-policy lookup, plus a Universal Commerce Protocol (UCP) checkout flow.
+  humanURL: https://everlane.com
+  baseURL: https://everlane.com/api/mcp
+  tags:
+  - MCP
+  - Commerce
+  - Shopify
+  - Agentic
+  properties:
+  - type: MCPServer
+    url: mcp/everlane-mcp.yml
+  - type: WellKnown
+    url: well-known/everlane-well-known.yml
+  - type: Authentication
+    url: authentication/everlane-authentication.yml
+  - type: OAuthScopes
+    url: scopes/everlane-scopes.yml
+  - type: LLMsTxt
+    url: llms/everlane-llms.txt
+  - type: Conventions
+    url: conventions/everlane-conventions.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +77,32 @@ maintainers:
 common:
 - type: Website
   url: https://everlane.com
+- type: Support
+  url: https://support.everlane.com/
+- type: PrivacyPolicy
+  url: https://www.everlane.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://www.everlane.com/policies/terms-of-service
+- type: SignUp
+  url: https://account.everlane.com
+- type: GitHubOrganization
+  url: https://github.com/Everlane
+- type: MCPServer
+  url: mcp/everlane-mcp.yml
+- type: WellKnown
+  url: well-known/everlane-well-known.yml
+- type: LLMsTxt
+  url: llms/everlane-llms.txt
+- type: Authentication
+  url: authentication/everlane-authentication.yml
+- type: OAuthScopes
+  url: scopes/everlane-scopes.yml
+- type: Conventions
+  url: conventions/everlane-conventions.yml
+- type: DomainSecurity
+  url: security/everlane-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

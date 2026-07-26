@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of https://everlane.com/.well-known/ and https://www.everlane.com/.well-known/
+host: https://everlane.com
+documents:
+- path: /.well-known/openid-configuration
+  status: 200
+  file: everlane-openid-configuration.json
+  note: Shopify Customer Account OIDC discovery (issuer https://shopify.com/authentication/62379163734)
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: everlane-oauth-authorization-server.json
+  note: RFC 8414 authorization-server metadata (identical payload to openid-configuration)
+- path: /.well-known/ucp
+  status: 200
+  file: everlane-ucp.json
+  note: Universal Commerce Protocol (ucp.dev) merchant profile — versions 2026-04-08 / 2026-01-23, MCP + embedded transports
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/api-catalog
+  status: 301
+- path: /.well-known/ai-plugin.json
+  status: 301

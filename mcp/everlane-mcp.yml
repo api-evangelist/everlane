@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: live tools/list against https://everlane.com/api/mcp (2026-07-19)
+status: published
+server:
+  name: everlane-storefront
+  vendor: Shopify Storefront MCP
+  transport: http
+  url: https://everlane.com/api/mcp
+  protocol: mcp (JSON-RPC 2.0)
+  auth: none (public storefront read/cart); checkout requires buyer approval
+tools:
+- name: search_catalog
+  description: Search for products from the online store using natural language queries and/or filter criteria. Paginated via pagination.cursor. Conforms to UCP catalog search (dev.ucp.shopping.catalog.search).
+- name: get_product_details
+  description: Look up a product by ID; pass the options parameter to select a specific variant, otherwise the first available variant is returned.
+- name: get_cart
+  description: Get the cart including items, shipping options, discount info, and checkout URL for a given cart id.
+- name: update_cart
+  description: Add/remove/update line items, buyer information, shipping details, discount codes, gift cards and notes in one consolidated call.
+- name: search_shop_policies_and_faqs
+  description: Get facts about the store's policies, products, or services (return policy, shipping policy, contact info, etc.).
+ucp:
+  discovery: https://www.everlane.com/.well-known/ucp
+  mcp_endpoint: https://www.everlane.com/api/ucp/mcp
+  note: Second, UCP-native MCP endpoint (Universal Commerce Protocol, ucp.dev). Requires UCP protocol context; tools/list returned HTTP 422 without it. Adds create_cart / create_checkout / update_checkout / complete_checkout per the published /llms.txt agent flow. Checkout requires contemporaneous human/buyer approval.
+platform_note: Storefront runs on Shopify; MCP + UCP surfaces are Shopify-native, exposed on the everlane.com domain. Not an Everlane-authored bespoke API.

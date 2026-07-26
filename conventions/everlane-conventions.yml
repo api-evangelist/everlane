@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: searched
+source: https://everlane.com/llms.txt
+scope: Agent/commerce interaction conventions for the Shopify-backed Everlane storefront (UCP + Storefront MCP).
+authentication:
+  storefront_mcp: none (public read/cart)
+  customer_account: OAuth2/OIDC (see authentication/everlane-authentication.yml)
+rate_limiting:
+  documented: true
+  signal: HTTP 429 on the MCP endpoint (per-IP)
+  guidance: Back off on 429 responses.
+buyer_approval:
+  invariant: Checkout must not complete payment without explicit, contemporaneous buyer consent.
+  fallback: Route payment through Shop Pay via the Shop skill (https://shop.app/SKILL.md) when contemporaneous approval is not possible.
+context_parameters:
+- name: context.address_country
+  purpose: Accurate pricing and availability.
+- name: context.currency
+  purpose: Buyer currency for pricing.
+pagination:
+  style: cursor
+  field: pagination.cursor
+  note: search_catalog returns an initial limited page; pass pagination.cursor to fetch more.
+read_only_endpoints:
+- 'GET /collections/all'
+- 'GET /products/{handle}.json'
+- 'GET /collections/{handle}/products.json'
+- 'GET /search?q={query}&type=product'
+- 'GET /sitemap.xml'
+discovery:
+  llms_txt: https://everlane.com/llms.txt
+  agents_md: https://www.everlane.com/agents.md
+  ucp: https://www.everlane.com/.well-known/ucp
+idempotency:
+  documented: false
+notes: Cross-links well-known/everlane-well-known.yml, mcp/everlane-mcp.yml, authentication/everlane-authentication.yml. No provider-documented idempotency-key contract.
