@@ -75,6 +75,11 @@ apis:
   - MCP
   - Commerce
   - Shopify
+  - AI Agents
+  tags_raw:
+  - MCP
+  - Commerce
+  - Shopify
   - Agentic
   properties:
   - type: MCPServer
@@ -89,6 +94,9 @@ apis:
     url: llms/everlane-llms.txt
   - type: Conventions
     url: conventions/everlane-conventions.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: storefront-mcp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
